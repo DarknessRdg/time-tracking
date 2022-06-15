@@ -1,5 +1,4 @@
 import React from 'react';
-import Container from '../Container';
 
 const ON_GOING_LABEL = 'Em andamento...';
 

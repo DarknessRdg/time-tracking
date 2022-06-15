@@ -3,6 +3,8 @@ function getOrElse(value, elseValue) {
     return elseValue;
 }
 
-export default {
+const optional = {
     getOrElse,
 };
+
+export default optional;

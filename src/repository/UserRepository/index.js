@@ -1,6 +1,5 @@
 import HoursRegisters from '../../domain/HoursRegisters';
 import User from '../../domain/User';
-import optional from '../../utils/optional';
 
 const HOURS_REGISTERED_KEY = 'hours';
 const USER_NAME_KEY = 'username';
