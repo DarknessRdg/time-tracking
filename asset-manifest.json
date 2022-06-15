@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.dff841d2.css",
-    "main.js": "/static/js/main.b62f3d2a.js",
-    "index.html": "/index.html",
-    "main.dff841d2.css.map": "/static/css/main.dff841d2.css.map",
-    "main.b62f3d2a.js.map": "/static/js/main.b62f3d2a.js.map"
+    "main.css": "/contador-de-horas/static/css/main.dff841d2.css",
+    "main.js": "/contador-de-horas/static/js/main.b62f3d2a.js",
+    "index.html": "/contador-de-horas/index.html",
+    "main.dff841d2.css.map": "/contador-de-horas/static/css/main.dff841d2.css.map",
+    "main.b62f3d2a.js.map": "/contador-de-horas/static/js/main.b62f3d2a.js.map"
   },
   "entrypoints": [
     "static/css/main.dff841d2.css",
