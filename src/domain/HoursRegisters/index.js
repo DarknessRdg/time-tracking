@@ -1,4 +1,3 @@
-import Hour from './Hour';
 import Register from './Register';
 
 export default class HoursRegisters {
@@ -7,9 +6,9 @@ export default class HoursRegisters {
     }
 
     static fromJson(json) {
-        return new HoursRegisters({
-            registers: json.registers.map((it) => new Hour.fromJson(it))
-        });
+        const registers = json.registers.map((it) => Register.fromJson(it));
+
+        return new HoursRegisters({ registers });
     }
 
     addNew() {

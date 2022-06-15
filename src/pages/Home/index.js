@@ -19,6 +19,7 @@ export default function Home() {
 
         service.addHour();
         setRegisters([...service.getUser().hoursRegisters.all()]);
+        updateTotalHours();
     }
 
     function closeHour(e, hour) {
@@ -26,6 +27,7 @@ export default function Home() {
 
         service.closeHour(hour);
         setRegisters([...service.getUser().hoursRegisters.all()]);
+        updateTotalHours();
     }
 
     function updateTotalHours() {

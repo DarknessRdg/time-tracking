@@ -6,7 +6,8 @@ module.exports = {
         },
         extend: {
             colors: {
-                darkMode: '#121214',
+                darkMode: '#09090A',
+                darkModeElevated: '#20202460',
                 purple: '#8257e5',
                 purpleHover: '##9466ff',
             },

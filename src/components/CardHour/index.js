@@ -16,7 +16,7 @@ export default function CardHour({ hour, onClose }) {
         <div>
             <section
                 className={
-                    'rounded-md border-purple border-2 inline-block pt-16 pb-10 px-10 min-w-[90vw] sm:min-w-[45vw] md:min-w-[40vw] lg:min-w-[35vw] text-left mb-10 relative'
+                    'rounded-md border-purple bg-darkModeElevated border-2 inline-block pt-16 pb-10 px-10 min-w-[90vw] sm:min-w-[45vw] md:min-w-[40vw] lg:min-w-[35vw] text-left mb-10 relative'
                 }
             >
                 <span

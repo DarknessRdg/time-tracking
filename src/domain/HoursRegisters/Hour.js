@@ -5,7 +5,7 @@ export default class Hour {
     }
 
     static fromJson(json) {
-        return new Hour({ json });
+        return new Hour({ ...json });
     }
 
     hoursBetween(other) {

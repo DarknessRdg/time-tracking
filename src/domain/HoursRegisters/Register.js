@@ -1,3 +1,4 @@
+import optional from '../../utils/optional';
 import Hour from './Hour';
 
 export default class Register {
@@ -5,6 +6,19 @@ export default class Register {
         this.id = id;
         this._start = Hour.fromDate(new Date());
         this._end = null;
+    }
+
+    static fromJson(json) {
+        const reg = new Register({
+            id: json.id,
+        });
+
+        console.log(json);
+        reg._start = Hour.fromJson(json._start);
+        reg._end = optional.mapOrElse(json._end, null, (end) =>
+            Hour.fromJson(end)
+        );
+        return reg;
     }
 
     onGoing() {

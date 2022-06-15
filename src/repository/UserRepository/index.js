@@ -16,7 +16,7 @@ function getHours() {
     const json = JSON.parse(localStorage.getItem(HOURS_REGISTERED_KEY));
 
     if (!json) return null;
-    return new HoursRegisters.fromJson(json);
+    return HoursRegisters.fromJson(json);
 }
 
 function setHours(hours) {
