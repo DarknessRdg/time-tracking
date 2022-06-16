@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CardHour from '../../components/CardHour';
 import Container from '../../components/Container';
 import CounterService from '../../services/CounterService';
@@ -19,7 +19,6 @@ export default function Home() {
 
         service.addHour();
         setRegisters([...service.getUser().hoursRegisters.all()]);
-        updateTotalHours();
     }
 
     function closeHour(e, hour) {
@@ -27,12 +26,13 @@ export default function Home() {
 
         service.closeHour(hour);
         setRegisters([...service.getUser().hoursRegisters.all()]);
-        updateTotalHours();
     }
 
     function updateTotalHours() {
         setTotalHoursWorked(service.sumTotalUserHours().toString());
     }
+
+    useEffect(updateTotalHours, [registers]);
 
     return (
         <Container className="text-center py-10">

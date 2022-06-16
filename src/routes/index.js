@@ -7,9 +7,11 @@ const URLS = {
     HOME: '',
 };
 
+const BASE_NAME = process.env.PUBLIC_URL ? process.env.PUBLIC_URL : '/';
+
 export default function AppRoutes() {
     return (
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter basename={BASE_NAME}>
             <Routes>
                 <Route path={URLS.HOME} element={<Home />} />
                 <Route path="*" element={<NotFound />} />
