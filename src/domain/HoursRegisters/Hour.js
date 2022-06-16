@@ -23,7 +23,10 @@ export default class Hour {
     }
 
     toString() {
-        return `${this.hours}:${this.minutes}`;
+        const hours = withTrealingZeros(this.hours, 2);
+        const minutes = withTrealingZeros(this.minutes, 2);
+
+        return `${hours}:${minutes}`;
     }
 
     static fromDate(date) {
@@ -31,4 +34,12 @@ export default class Hour {
         const minutes = date.getMinutes();
         return new Hour({ hours, minutes });
     }
+}
+
+function withTrealingZeros(number, size) {
+    var string = String(number);
+    while (string.length < (size || 2)) {
+        string = '0' + string;
+    }
+    return string;
 }
