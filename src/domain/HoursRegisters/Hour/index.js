@@ -16,8 +16,16 @@ export default class Hour {
     }
 
     plus(other) {
-        const hours = this.hours + other.hours;
-        const minutes = this.minutes + other.minutes;
+        const hoursToMinutes = (number) => number * 60;
+        const minutesToHours = (number) => parseInt(number / 60);
+
+        const thisInMinutes = hoursToMinutes(this.hours) + this.minutes;
+        const otherInMinutes = hoursToMinutes(other.hours) + other.minutes;
+
+        const allMinutes = thisInMinutes + otherInMinutes;
+
+        const hours = minutesToHours(allMinutes);
+        const minutes = allMinutes - hoursToMinutes(hours);
 
         return new Hour({ hours, minutes });
     }
