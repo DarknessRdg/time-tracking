@@ -1,11 +1,11 @@
-import optional from '../../utils/optional';
-import Hour from './Hour';
+import optional from '../../../utils/optional';
+import Hour from '../Hour';
 
 export default class Register {
-    constructor({ id }) {
+    constructor({ id, start = undefined, end = undefined }) {
         this.id = id;
-        this._start = Hour.fromDate(new Date());
-        this._end = null;
+        this._start = optional.getOrElse(start, Hour.fromDate(new Date()));
+        this._end = optional.getOrElse(end, null);
     }
 
     static fromJson(json) {
