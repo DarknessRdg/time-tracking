@@ -1,3 +1,5 @@
+const ONE_HOURS_IN_MINUTES = 60;
+
 export default class Hour {
     constructor({ hours, minutes }) {
         this.hours = hours;
@@ -16,16 +18,15 @@ export default class Hour {
     }
 
     plus(other) {
-        const hoursToMinutes = (number) => number * 60;
-        const minutesToHours = (number) => parseInt(number / 60);
+        const hoursToMinutes = (number) => number * ONE_HOURS_IN_MINUTES;
 
         const thisInMinutes = hoursToMinutes(this.hours) + this.minutes;
         const otherInMinutes = hoursToMinutes(other.hours) + other.minutes;
 
         const allMinutes = thisInMinutes + otherInMinutes;
 
-        const hours = minutesToHours(allMinutes);
-        const minutes = allMinutes - hoursToMinutes(hours);
+        const hours = parseInt(allMinutes / ONE_HOURS_IN_MINUTES);
+        const minutes = allMinutes % ONE_HOURS_IN_MINUTES;
 
         return new Hour({ hours, minutes });
     }
