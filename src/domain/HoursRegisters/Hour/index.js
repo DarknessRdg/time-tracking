@@ -9,26 +9,34 @@ export default class Hour {
     static fromJson(json) {
         return new Hour({ ...json });
     }
-
-    hoursBetween(other) {
-        const hours = Math.abs(this.hours - other.hours);
-        const minutes = Math.abs(this.minutes - other.minutes);
-
+    
+    static fromDate(date) {
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
         return new Hour({ hours, minutes });
     }
 
-    plus(other) {
-        const hoursToMinutes = (number) => number * ONE_HOURS_IN_MINUTES;
-
-        const thisInMinutes = hoursToMinutes(this.hours) + this.minutes;
-        const otherInMinutes = hoursToMinutes(other.hours) + other.minutes;
-
-        const allMinutes = thisInMinutes + otherInMinutes;
-
+    static fromMinutes({ allMinutes }) {
         const hours = parseInt(allMinutes / ONE_HOURS_IN_MINUTES);
         const minutes = allMinutes % ONE_HOURS_IN_MINUTES;
 
         return new Hour({ hours, minutes });
+    }
+
+    getSumOfMinutes() {
+        const hoursInMinutes = this.hours * ONE_HOURS_IN_MINUTES;
+        return this.minutes + hoursInMinutes;
+    }
+
+    hoursBetween(other) {
+        const diff = Math.abs(this.getSumOfMinutes() - other.getSumOfMinutes());
+
+        return Hour.fromMinutes({ allMinutes: diff });
+    }
+
+    plus(other) {
+        const allMinutes = this.getSumOfMinutes() + other.getSumOfMinutes();
+        return Hour.fromMinutes({ allMinutes });
     }
 
     toString() {
@@ -36,12 +44,6 @@ export default class Hour {
         const minutes = withTrealingZeros(this.minutes, 2);
 
         return `${hours}:${minutes}`;
-    }
-
-    static fromDate(date) {
-        const hours = date.getHours();
-        const minutes = date.getMinutes();
-        return new Hour({ hours, minutes });
     }
 }
 

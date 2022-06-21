@@ -38,13 +38,13 @@ describe('Test plus (+)', () => {
 
 describe('Test hours beteween (-)', () => {
     it('should return the difference betweeen hours', () => {
-        const shortestTime = new Hour({ hours: 5, minutes: 10 });
-        const biggestTime = new Hour({ hours: 15, minutes: 20 });
+        const shortestTime = new Hour({ hours: 11, minutes: 28 });
+        const biggestTime = new Hour({ hours: 13, minutes: 8 });
 
         const between = shortestTime.hoursBetween(biggestTime);
 
-        expect(between.hours).toBe(10);
-        expect(between.minutes).toBe(10);
+        expect(between.hours).toBe(1);
+        expect(between.minutes).toBe(40);
     });
 
     it('should always return positive numbers, even if its (A - B) or (B - A)', () => {
