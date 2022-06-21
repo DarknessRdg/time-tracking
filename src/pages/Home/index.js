@@ -3,6 +3,7 @@ import CardHour from '../../components/CardHour';
 import Container from '../../components/Container';
 import CounterService from '../../services/CounterService';
 import Refresh from '../../icons/Refresh';
+import Trash from '../../icons/Trash';
 
 const service = new CounterService();
 
@@ -18,18 +19,29 @@ export default function Home() {
         e.preventDefault();
 
         service.addHour();
-        setRegisters([...service.getUser().hoursRegisters.all()]);
+        updateStateUserRegisters();
     }
 
     function closeHour(e, hour) {
         e.preventDefault();
 
         service.closeHour(hour);
-        setRegisters([...service.getUser().hoursRegisters.all()]);
+        updateStateUserRegisters();
     }
 
     function updateTotalHours() {
         setTotalHoursWorked(service.sumTotalUserHours().toString());
+    }
+
+    function clearHistory(e) {
+        e.preventDefault();
+
+        service.clearHistory();
+        updateStateUserRegisters();
+    }
+
+    function updateStateUserRegisters() {
+        setRegisters([...service.getUser().hoursRegisters.all()]);
     }
 
     useEffect(updateTotalHours, [registers]);
@@ -61,8 +73,18 @@ export default function Home() {
             <button
                 className={'rounded-full bg-blue-600 py-2 px-4 text-blue-50'}
                 onClick={addHour}
+                type={'button'}
             >
                 Adicionar ponto
+            </button>
+            <button
+                className={
+                    'rounded-full bg-red-600 py-2 px-4 text-blue-50 ml-4'
+                }
+                onClick={clearHistory}
+                type={'button'}
+            >
+                <Trash className={'mr-2'} /> Limpar histórico de pontos
             </button>
         </Container>
     );

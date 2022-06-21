@@ -35,4 +35,8 @@ export default class UserRepository {
         setUserName(user.name);
         setHours(user.hoursRegisters);
     }
+
+    clearHistory() {
+        localStorage.setItem(HOURS_REGISTERED_KEY, null);
+    }
 }

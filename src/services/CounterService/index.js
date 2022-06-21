@@ -1,6 +1,7 @@
 import UserRepository from '../../repository/UserRepository';
 import Hour from '../../domain/HoursRegisters/Hour';
 import optional from '../../utils/optional';
+import HoursRegisters from '../../domain/HoursRegisters';
 
 export default class CounterService {
     constructor() {
@@ -34,5 +35,10 @@ export default class CounterService {
 
     save() {
         this.repo.save(this.getUser());
+    }
+
+    clearHistory() {
+        this.repo.clearHistory();
+        this._user.clearRegisters();
     }
 }
