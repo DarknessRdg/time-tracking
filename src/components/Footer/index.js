@@ -4,7 +4,7 @@ import Heart from '../../icons/Heart';
 
 export default function Footer() {
     return (
-        <footer className={'text-gray-400 text-center mt-24 pb-6'}>
+        <footer className={'text-gray-400 text-center mt-auto pt-20 pb-6'}>
             <div>
                 Made by Luan Rodrigues with
                 <Heart className={'text-red-400 h-6 inline-block mx-1'} />

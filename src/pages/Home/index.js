@@ -84,9 +84,7 @@ export default function Home() {
                 Adicionar ponto
             </button>
             <button
-                className={
-                    'rounded-full bg-red-600 py-2 px-4 text-blue-50 ml-4'
-                }
+                className={'rounded-full bg-red-600 py-2 px-4 text-blue-50 m-4'}
                 onClick={clearHistory}
                 type={'button'}
             >
