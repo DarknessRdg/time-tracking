@@ -1,8 +1,9 @@
 import React from 'react';
+import Trash from '../../icons/Trash';
 
 const ON_GOING_LABEL = 'Em andamento...';
 
-export default function CardHour({ hour, onClose }) {
+export default function CardHour({ hour, onClose, onDelete }) {
     let end = ON_GOING_LABEL;
     let period = ON_GOING_LABEL;
 
@@ -37,6 +38,15 @@ export default function CardHour({ hour, onClose }) {
                     onClick={onClose}
                 >
                     Encerrar
+                </button>
+
+                <button
+                    type={'button'}
+                    title={'Deletar ponto'}
+                    onClick={onDelete}
+                    className={'float-right text-red-500 text-2xl'}
+                >
+                    <Trash />
                 </button>
             </section>
         </div>

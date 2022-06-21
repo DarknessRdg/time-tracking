@@ -1,4 +1,5 @@
 import Register from './Register';
+import { v4 as uuidv4 } from 'uuid';
 
 export default class HoursRegisters {
     constructor({ registers }) {
@@ -12,12 +13,9 @@ export default class HoursRegisters {
     }
 
     addNew() {
-        const all = this.all();
-        const newId = all.length;
+        const newRegister = new Register({ id: uuidv4() });
 
-        const newRegister = new Register({ id: newId });
-
-        all.push(newRegister);
+        this.all().push(newRegister);
 
         return newRegister;
     }
@@ -26,6 +24,9 @@ export default class HoursRegisters {
         return this.registers;
     }
 
+    delete(register) {
+        this.registers = this.registers.filter((it) => it.id !== register.id);
+    }
     static empty() {
         return new HoursRegisters({ registers: [] });
     }

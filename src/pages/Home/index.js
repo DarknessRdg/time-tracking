@@ -40,6 +40,11 @@ export default function Home() {
         updateStateUserRegisters();
     }
 
+    function deleteRegister(register) {
+        service.deleteRegister(register);
+        updateStateUserRegisters();
+    }
+
     function updateStateUserRegisters() {
         setRegisters([...service.getUser().hoursRegisters.all()]);
     }
@@ -66,6 +71,7 @@ export default function Home() {
                     <CardHour
                         key={it.id}
                         hour={it}
+                        onDelete={() => deleteRegister(it)}
                         onClose={(e) => closeHour(e, it)}
                     />
                 ))}
