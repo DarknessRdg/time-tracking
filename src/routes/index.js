@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Footer from '../components/Footer';
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
 
@@ -13,7 +14,15 @@ export default function AppRoutes() {
     return (
         <BrowserRouter basename={BASE_NAME}>
             <Routes>
-                <Route path={URLS.HOME} element={<Home />} />
+                <Route
+                    path={URLS.HOME}
+                    element={
+                        <>
+                            <Home />
+                            <Footer />{' '}
+                        </>
+                    }
+                />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
