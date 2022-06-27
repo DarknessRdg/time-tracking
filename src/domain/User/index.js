@@ -1,14 +1,13 @@
-import optional from '../../utils/optional';
+import Optional from 'optional-js';
 import HoursRegisters from '../HoursRegisters';
 
 const DEFAULT_NAME = 'Colaborador';
 
 export default class User {
     constructor({ name, hoursRegisters }) {
-        this.name = optional.getOrElse(name, DEFAULT_NAME);
-        this.hoursRegisters = optional.getOrElse(
-            hoursRegisters,
-            HoursRegisters.empty()
+        this.name = Optional.ofNullable(name).orElse(DEFAULT_NAME);
+        this.hoursRegisters = Optional.ofNullable(hoursRegisters).orElseGet(
+            HoursRegisters.empty
         );
     }
 

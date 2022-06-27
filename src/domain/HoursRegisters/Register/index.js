@@ -14,9 +14,10 @@ export default class Register {
         });
 
         reg._start = Hour.fromJson(json._start);
-        reg._end = optional.mapOrElse(json._end, null, (end) =>
-            Hour.fromJson(end)
-        );
+        reg._end = Optional.ofNullable(json._end)
+            .map((it) => Hour.fromJson(it))
+            .orElse(null);
+
         return reg;
     }
 

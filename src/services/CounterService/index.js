@@ -1,6 +1,6 @@
 import UserRepository from '../../repository/UserRepository';
 import Hour from '../../domain/HoursRegisters/Hour';
-import optional from '../../utils/optional';
+import Optional from 'optional-js';
 
 export default class CounterService {
     constructor() {
@@ -9,7 +9,9 @@ export default class CounterService {
     }
 
     getUser() {
-        this._user = optional.getOrElse(this._user, this.repo.getUserData());
+        this._user = Optional.ofNullable(this._user).orElseGet(
+            this.repo.getUserData
+        );
         return this._user;
     }
 
