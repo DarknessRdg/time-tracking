@@ -8,7 +8,6 @@ export default function CardHour({ hour, onClose, onDelete }) {
     let period = ON_GOING_LABEL;
 
     if (!hour.onGoing()) {
-        console.log(hour.onGoing());
         end = hour.end().toString();
         period = 'Duração: ' + hour.period().toString();
     }

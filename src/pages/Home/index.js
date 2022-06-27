@@ -12,7 +12,6 @@ export default function Home() {
         ...service.getUser().hoursRegisters.all(),
     ]);
 
-    console.log(service);
     const [totalHoursWorked, setTotalHoursWorked] = useState('0:0');
 
     function addHour(e) {
@@ -79,15 +78,13 @@ export default function Home() {
             <button
                 className={'rounded-full bg-blue-600 py-2 px-4 text-blue-50'}
                 onClick={addHour}
-                type={'button'}
-            >
+                type={'button'}>
                 Adicionar ponto
             </button>
             <button
                 className={'rounded-full bg-red-600 py-2 px-4 text-blue-50 m-4'}
                 onClick={clearHistory}
-                type={'button'}
-            >
+                type={'button'}>
                 <Trash className={'mr-2'} /> Limpar histórico de pontos
             </button>
         </Container>

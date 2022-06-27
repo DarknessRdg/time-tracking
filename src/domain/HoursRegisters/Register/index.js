@@ -13,7 +13,6 @@ export default class Register {
             id: json.id,
         });
 
-        console.log(json);
         reg._start = Hour.fromJson(json._start);
         reg._end = optional.mapOrElse(json._end, null, (end) =>
             Hour.fromJson(end)
