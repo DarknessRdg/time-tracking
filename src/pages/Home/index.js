@@ -7,6 +7,8 @@ import Trash from '../../icons/Trash';
 
 const service = new CounterService();
 
+const DELAY_BEFORE_UPDATE_TOTAL_TIMES_MS = 5000;
+
 export default function Home() {
     const [registers, setRegisters] = useState([
         ...service.getUser().hoursRegisters.all(),
@@ -49,6 +51,9 @@ export default function Home() {
     }
 
     useEffect(updateTotalHours, [registers]);
+    useEffect(() => {
+        setInterval(updateTotalHours, DELAY_BEFORE_UPDATE_TOTAL_TIMES_MS);
+    }, []);
 
     return (
         <Container className="text-center py-10">

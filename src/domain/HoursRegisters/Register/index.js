@@ -1,11 +1,11 @@
-import optional from '../../../utils/optional';
+import Optional from 'optional-js';
 import Hour from '../Hour';
 
 export default class Register {
     constructor({ id, start = undefined, end = undefined }) {
         this.id = id;
-        this._start = optional.getOrElse(start, Hour.fromDate(new Date()));
-        this._end = optional.getOrElse(end, null);
+        this._start = Optional.ofNullable(start).orElseGet(Hour.now);
+        this._end = Optional.ofNullable(end).orElse(null);
     }
 
     static fromJson(json) {
@@ -33,10 +33,11 @@ export default class Register {
     }
 
     period() {
-        const defaultPeriod = new Hour({ hours: 0, minutes: 0 });
+        const end = Optional.ofNullable(this.end()).orElseGet(() =>
+            Hour.fromDate(new Date())
+        );
 
-        if (this.onGoing()) return defaultPeriod;
-        return this.start().hoursBetween(this.end());
+        return this.start().hoursBetween(end);
     }
 
     close() {

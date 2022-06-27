@@ -59,15 +59,25 @@ describe('Test end', () => {
 });
 
 describe('Test period', () => {
-    it('should return 0ed period if register is sill on going', () => {
-        const register = new Register({ id: 1 });
+    it('should return difference beteween NOW and start if sill on going', () => {
+        const register = new Register({
+            id: 1,
+            start: new Hour({ hours: 10, minutes: 1 }),
+        });
+
+        const nowHours = 11;
+        const nowMinutes = 3;
+
+        const now = new Date(2020, 11, 1, nowHours, nowMinutes, 1);
+
+        mockSystemTime(now);
 
         expect(register.onGoing()).toBeTruthy();
 
         const period = register.period();
 
-        expect(period.hours).toBe(0);
-        expect(period.minutes).toBe(0);
+        expect(period.hours).toBe(1);
+        expect(period.minutes).toBe(2);
     });
 
     it('should return difference beteween start and end time', () => {
@@ -84,3 +94,7 @@ describe('Test period', () => {
         expect(period.minutes).toBe(0);
     });
 });
+
+function mockSystemTime(mockDate) {
+    jest.useFakeTimers('modern').setSystemTime(mockDate);
+}

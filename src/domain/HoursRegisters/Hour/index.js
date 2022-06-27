@@ -6,10 +6,14 @@ export default class Hour {
         this.minutes = minutes;
     }
 
+    static now() {
+        return Hour.fromDate(new Date());
+    }
+
     static fromJson(json) {
         return new Hour({ ...json });
     }
-    
+
     static fromDate(date) {
         const hours = date.getHours();
         const minutes = date.getMinutes();
