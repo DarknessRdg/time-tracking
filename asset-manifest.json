@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/time-tracking/static/css/main.23c928eb.css",
-    "main.js": "/time-tracking/static/js/main.7e8b73ac.js",
+    "main.js": "/time-tracking/static/js/main.aa03e4f5.js",
     "index.html": "/time-tracking/index.html",
     "main.23c928eb.css.map": "/time-tracking/static/css/main.23c928eb.css.map",
-    "main.7e8b73ac.js.map": "/time-tracking/static/js/main.7e8b73ac.js.map"
+    "main.aa03e4f5.js.map": "/time-tracking/static/js/main.aa03e4f5.js.map"
   },
   "entrypoints": [
     "static/css/main.23c928eb.css",
-    "static/js/main.7e8b73ac.js"
+    "static/js/main.aa03e4f5.js"
   ]
 }
