@@ -1,7 +1,8 @@
 {
   "name": "contador-de-horas",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "license": "MIT",
   "homepage": "https://darknessrdg.github.io/contador-de-horas/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
