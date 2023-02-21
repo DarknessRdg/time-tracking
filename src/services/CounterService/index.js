@@ -47,4 +47,9 @@ export default class CounterService {
         this.repo.clearHistory();
         this.getUser().clearRegisters();
     }
+
+    updateRegisterById(updatedRegister) {
+        this.getUser().hoursRegisters.updateById(updatedRegister);
+        this.save();
+    }
 }
