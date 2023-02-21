@@ -4,7 +4,7 @@ export default function Heart(props) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="ionicon s-ion-icon"
+            className="ionicon s-ion-icon"
             viewBox="0 0 512 512"
             {...props}
         >
