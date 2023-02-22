@@ -1,53 +1,34 @@
-import React from 'react';
-import Trash from '../../icons/Trash';
+import React, { useState } from 'react';
+import CardContainer from './CardContainer';
+import constants from './constants';
+import InfoBody from './InfoBody';
+import EditBody from './EditBody';
+import Register from '../../domain/HoursRegisters/Register';
 
-const ON_GOING_LABEL = 'Em andamento...';
 
-export default function CardHour({ hour, onClose, onDelete }) {
-    let end = ON_GOING_LABEL;
-    let period = ON_GOING_LABEL;
+export default function CardHour({ hour, onClose, onDelete, onEdit }) {
+    const [isEdit, setEdit] = useState(false);
 
-    if (!hour.onGoing()) {
-        end = hour.end().toString();
-        period = 'Duração: ' + hour.period().toString();
+    function toggleEdit() {
+        setEdit(!isEdit);
     }
 
-    return (
-        <div>
-            <section
-                className={
-                    'rounded-md border-purple bg-darkModeElevated border-2 inline-block pt-16 pb-10 px-10 min-w-[90vw] sm:min-w-[45vw] md:min-w-[40vw] lg:min-w-[35vw] text-left mb-10 relative'
-                }
-            >
-                <span
-                    className={
-                        'absolute -top-7 bg-purple rounded-full p-3 left-10 right-10 text-center'
-                    }
-                >
-                    {period}
-                </span>
+    let period = constants.onGoingLabel;
 
-                <div className="mb-5">
-                    <p>Início: {hour.start().toString()}</p>
-                    <p>Fim: {end}</p>
-                </div>
+    if (!hour.onGoing()) {
+        period = `${constants.durationPrefix} ${hour.period()}`;
+    }
 
-                <button
-                    className={'py-2 px-4 bg-red-600 rounded-full text-blue-50'}
-                    onClick={onClose}
-                >
-                    Encerrar
-                </button>
+    function onSaveEdit(start, end) {
+        onEdit(new Register({ id: hour.id, start, end }));
+        toggleEdit();
+    }
 
-                <button
-                    type={'button'}
-                    title={'Deletar ponto'}
-                    onClick={onDelete}
-                    className={'float-right text-red-500 text-2xl'}
-                >
-                    <Trash />
-                </button>
-            </section>
-        </div>
-    );
+    return <CardContainer label={period}>
+        {
+            !isEdit ?
+                <InfoBody hour={hour} onDelete={onDelete} onClose={onClose} toggleEdit={toggleEdit} /> :
+                <EditBody hour={hour} onCancel={toggleEdit} onSave={onSaveEdit}/>
+        }
+    </CardContainer>;
 }

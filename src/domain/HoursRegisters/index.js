@@ -27,6 +27,17 @@ export default class HoursRegisters {
     delete(register) {
         this.registers = this.registers.filter((it) => it.id !== register.id);
     }
+
+    updateById(updatedRegister) {
+        const noFound = -1;
+        const amountOfElementsToReplace = 1;
+
+        const index = this.registers.findIndex(it => it.id == updatedRegister.id);
+        if (index === noFound) return;
+
+        this.registers.splice(index, amountOfElementsToReplace, updatedRegister);
+    }
+
     static empty() {
         return new HoursRegisters({ registers: [] });
     }

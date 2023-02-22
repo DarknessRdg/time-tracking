@@ -46,6 +46,11 @@ export default function Home() {
         updateStateUserRegisters();
     }
 
+    function updateRegister(updatedRegister) {
+        service.updateRegisterById(updatedRegister);
+        updateStateUserRegisters();
+    }
+
     function updateStateUserRegisters() {
         setRegisters([...service.getUser().hoursRegisters.all()]);
     }
@@ -77,6 +82,7 @@ export default function Home() {
                         hour={it}
                         onDelete={() => deleteRegister(it)}
                         onClose={(e) => closeHour(e, it)}
+                        onEdit={updateRegister}
                     />
                 ))}
             </div>
