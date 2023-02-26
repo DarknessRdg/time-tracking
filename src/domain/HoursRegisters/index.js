@@ -32,10 +32,16 @@ export default class HoursRegisters {
         const noFound = -1;
         const amountOfElementsToReplace = 1;
 
-        const index = this.registers.findIndex(it => it.id == updatedRegister.id);
+        const index = this.registers.findIndex(
+            (it) => it.id === updatedRegister.id
+        );
         if (index === noFound) return;
 
-        this.registers.splice(index, amountOfElementsToReplace, updatedRegister);
+        this.registers.splice(
+            index,
+            amountOfElementsToReplace,
+            updatedRegister
+        );
     }
 
     static empty() {
