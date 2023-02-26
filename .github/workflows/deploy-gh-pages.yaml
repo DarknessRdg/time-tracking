@@ -15,7 +15,7 @@ jobs:
                   node-version: '16.x'
 
             - name: Install dependencies
-              run: yarn install --frozen-lockfile
+              run: yarn install
 
             - name: Build react app
               run: yarn build
