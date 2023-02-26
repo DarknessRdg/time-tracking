@@ -18,7 +18,7 @@ jobs:
               run: yarn install
 
             - name: Lint
-              run: yarn lint
+              run: yarn lint  --max-warnings 0
 
             - name: Test
               run: yarn test

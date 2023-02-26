@@ -2,14 +2,13 @@ name: Pull requests
 
 on:
     pull_request:
-        branches: 
-          - '*'
+        branches:
+            - '*'
 
 jobs:
     lint_and_test:
         runs-on: ubuntu-18.04
         steps:
-            - name: Checkout code
             - uses: actions/checkout@v3
               with:
                   ref: ${{ github.event.pull_request.head.sha }}
@@ -21,8 +20,8 @@ jobs:
             - name: Install dependencies
               run: yarn install
 
-            - name: Lint
-              run: yarn lint
+            - name: Validate lint
+              run: yarn lint  --max-warnings 0
 
             - name: Test
               run: yarn test
