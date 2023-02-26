@@ -33,7 +33,7 @@ export default class HoursRegisters {
         const amountOfElementsToReplace = 1;
 
         const index = this.registers.findIndex(
-            (it) => it.id == updatedRegister.id
+            (it) => it.id === updatedRegister.id
         );
         if (index === noFound) return;
 

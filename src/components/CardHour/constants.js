@@ -1,4 +1,6 @@
-export default {
+const CardConstantsValues = {
     onGoingLabel: 'Em andamento...',
-    durationPrefix: 'Duração:'
-}
+    durationPrefix: 'Duração:',
+};
+
+export default CardConstantsValues;
