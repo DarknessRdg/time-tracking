@@ -17,6 +17,12 @@ jobs:
             - name: Install dependencies
               run: yarn install
 
+            - name: Lint
+              run: yarn lint
+
+            - name: Test
+              run: yarn test
+
             - name: Build react app
               run: yarn build
 

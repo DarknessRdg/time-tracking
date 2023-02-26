@@ -2,10 +2,11 @@ name: Pull requests
 
 on:
     pull_request:
-        branches: ['*']
+        branches: 
+          - '*'
 
 jobs:
-    deploy:
+    lint_and_test:
         runs-on: ubuntu-18.04
         steps:
             - name: Checkout code
@@ -20,7 +21,7 @@ jobs:
             - name: Install dependencies
               run: yarn install
 
-            - name: Validate lint
+            - name: Lint
               run: yarn lint
 
             - name: Test
